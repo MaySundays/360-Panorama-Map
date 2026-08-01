@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360 Panorama</title>
+    <title>360 Panorama Test</title>
 </head>
 <body>
-    
+    <h1>Welcome to the 360 Panorama Test Page</h1>
+    <p>This is a simple test page for the 360 Panorama Map project.</p>
+    <button>Click Me</button>
+
+    <script>
+        const heading = document.querySelector('h1');
+        const button = document.querySelector('button');
+
+        button.addEventListener('click', () => {
+            fetch('http://localhost:3000/message')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Server error: ${response.status} ${response.statusText}');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    heading.textContent = data.message;
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+        })
+    </script>
 </body>
 </html>
