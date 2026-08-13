@@ -1,0 +1,268 @@
+@import url("https://use.typekit.net/jmk3xov.css");
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/BeTrueToYourSchoolII-Solid_FREE_FOR_PERSONAL_USE_ONLY.ttf'),
+  url('fonts/BeTrueToYourSchoolII-Outline_FREE_FOR_PERSONAL_USE_ONLY.ttf');
+  font-weight: lighter;
+  font-size: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url(fonts/HelveticaNeueLight.otf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: url(fonts/HelveticaNeueBold.otf);
+  font-weight: normal;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* 1. Put the background image directly on the body */
+  background-image: url('cic.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* 2. Create the white transparent overlay right above the image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.188); /* 50% white tint */
+  z-index: -1; /* Sits over the body image, but under the canvas */
+  pointer-events: none;
+  
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 100vh;
+  
+  /* Create the frame layout */
+  box-sizing: border-box; 
+  border-left: 10px solid #770101; /* Adjust width (15px) and color (#000000) here */
+  border-right: 10px solid #770101;
+  border-bottom: 10px solid #770101;
+  
+  /* Layering and interactions */
+  z-index: 9999; /* Forces the border to sit on top of everything, including the canvas */
+  pointer-events: none; /* Allows you to click or scroll through the border area */
+}
+
+
+/* 3. Sit the Three.js canvas over the overlay tint */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Keeps the canvas above the overlay layer */
+  pointer-events: none; /* Allows scrolling and clicking through the canvas frame */
+}
+
+
+:root {
+  --dark-bg: rgba(15, 15, 15, 0.95);
+  --spacing: 350px;
+
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ==========================
+   NAVBAR
+   ========================== */
+
+/* ========================== NAVBAR ========================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background: #770101;
+  z-index: 100;
+  pointer-events: auto;
+  color: antiquewhite;
+}
+
+.nav-logo {
+  font-family: elevon, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* Removed animation properties from here */
+}
+
+.nav-links a {
+  color: rgb(244, 241, 241);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  
+  /* 1. Added base padding and border-radius to prevent layout shifts */
+  padding: 20px;
+  border-radius: 30px;
+  background-color: transparent;
+  
+  /* 2. Moved animation properties to the actual links */
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+}
+
+/* 3. Targeted the links directly for hover states */
+.nav-links a:hover, 
+.nav-links a:focus, 
+.nav-links a:active {
+  background-color: rgb(255, 189, 35);
+  color: #770101;
+}
+
+
+main {
+  width: 100%;
+  color: #770101;
+  z-index: 99;
+  position: absolute;
+  margin: 0 auto;
+  padding: 120px 0 100px 0;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  pointer-events: none;
+}
+h1, h2, h3, blockquote {
+  font-family: elevon, sans-serif;
+  margin-bottom: 20px;
+}
+h1{
+   font-family: 'MyCustomFont', serif;
+   font-size: 130px;
+   font-weight: lighter;
+   margin-top: 40px;
+   line-height: 0.8;
+   text-shadow: -8px 1px white;
+}
+ header {
+  background-image: url('speech bubble.png');
+  background-repeat: no-repeat;
+  background-size: 950px 497px;
+  width: 850px;
+  height: 420px;
+  margin-left: 50px;
+  margin-top: 5px;
+  grid-column: 1 / span 7;
+  font-size: 2.5rem;
+  padding: 50px;
+  padding-top: 5px;
+
+  margin-bottom: 32px;
+  position: relative;
+}
+button {
+  background-color: #770101;
+  color:rgb(255, 189, 35);
+  font-size: 30px;
+  margin-top: 1px;
+  padding: 10px;
+  width: 730px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.rain {
+  background-image: url('maroon bar.png');
+  color:aliceblue;
+  font-size: 32px;
+  grid-column: 1/8;
+  width:840px;
+  height: 35px;
+  padding-left: 60px;
+  padding-bottom: 25px;
+  background-repeat: no-repeat;
+  background-size: 916px;
+}
+section {
+  grid-column: 2 / 8;
+  padding: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 50px;
+}
+
+.light, .left, .first {
+  background: rgb(255, 189, 35);
+  font-weight: bold;
+  padding: 30px;
+  border: 7px solid #770101;
+  border-radius: 20px;
+}
+
+  blockquote {
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / span 9;
+    margin-bottom: 50px;
+  }
+
+  blockquote p {
+    color: black;
+    background-color: white;
+    font-size: 4rem;
+    display: inline;
+    line-height: 1;
+  }
+
+  .left {
+    grid-column: 6 / 12;
+  }
