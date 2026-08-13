@@ -13,13 +13,21 @@
   "license": "ISC",
   "author": "May",
   "type": "module",
-  "main": "index.js",
+  "main": "back/testdbconnect/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node ./back/testdbconnect/index.js"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mysql2": "^3.23.3"
+    "express-session": "^1.19.0",
+    "hbs": "^4.2.1",
+    "mysql2": "^3.23.3",
+    "nodemon": "^3.1.14"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true
   }
 }
