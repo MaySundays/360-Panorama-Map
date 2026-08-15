@@ -145,7 +145,7 @@ pointLight.position.set(
 const ambientLight =
   new THREE.AmbientLight(
     0x770101,
-    1
+    0.2
   );
 
 
@@ -329,7 +329,7 @@ loader.load(
       if (materialName === 'mat23') {
 
         child.material.color.set(
-          0x770101
+          0x6e1313
         );
 
       }
