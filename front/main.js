@@ -145,7 +145,7 @@ pointLight.position.set(
 const ambientLight =
   new THREE.AmbientLight(
     0x770101,
-    0.2
+    -0.5
   );
 
 
