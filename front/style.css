@@ -242,18 +242,22 @@ h1{
   pointer-events: auto;
 }
 .button {
-  position: relative;
-  z-index: 200;
+  display: block;
+  box-sizing: border-box;
+
   background-color: #770101;
   color: rgb(255, 189, 35);
   font-size: 30px;
   margin-top: 1px;
   padding: 10px;
   width: 730px;
+
   border: 0;
   border-radius: 5px;
+
+  text-decoration: none;
+  text-align: center;
   cursor: pointer;
-  pointer-events: auto;
 }
 
 .rain {

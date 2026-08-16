@@ -62,7 +62,7 @@ if (learnMoreButton) {
     () => {
 
       const features =
-        document.querySelector('about.html');
+        document.querySelector('scroll-animation-main/scroll-animation-main/about.html');
 
       if (features) {
 
