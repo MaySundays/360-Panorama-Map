@@ -48,7 +48,34 @@ document.querySelectorAll('.transition-link').forEach(link => {
     }
   });
 });
+// ======================================================
+// LEARN MORE BUTTON
+// ======================================================
 
+const learnMoreButton =
+  document.querySelector('.button');
+
+if (learnMoreButton) {
+
+  learnMoreButton.addEventListener(
+    'click',
+    () => {
+
+      const features =
+        document.querySelector('about.html');
+
+      if (features) {
+
+        features.scrollIntoView({
+          behavior: 'smooth'
+        });
+
+      }
+
+    }
+  );
+
+}
 
 // ======================================================
 // THREE.JS SCENE
