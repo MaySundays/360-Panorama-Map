@@ -7,6 +7,24 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@400;700&display=swap');
+      @font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/BeTrueToYourSchoolII-Solid_FREE_FOR_PERSONAL_USE_ONLY.ttf'),
+  url('fonts/BeTrueToYourSchoolII-Outline_FREE_FOR_PERSONAL_USE_ONLY.ttf');
+  font-weight: lighter;
+  font-size: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url(fonts/HelveticaNeueLight.otf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: url(fonts/HelveticaNeueBold.otf);
+  font-weight: normal;
+}
 body {
   --gap: 40em;
   margin: 0;
@@ -14,26 +32,76 @@ body {
 
   color: #fff;
 
-  --color-top: #6d1010;
+  --color-top: #300303;
   --color-bottom: #b80000;
 
   background: #000;
 }
 
-      nav {
+ .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 1em;
+  height: 95px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 10;
+  justify-content: space-between;
+  padding: 0 50px;
+  padding-left: 10px;
   box-sizing: border-box;
+  background: #770101;
+  z-index: 100;
+  pointer-events: auto;
+  color: antiquewhite;
 }
 
+.nav-logo {
+  font-family: elevon, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* Removed animation properties from here */
+}
+
+.nav-links a {
+  color: rgb(244, 241, 241);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  
+  /* 1. Added base padding and border-radius to prevent layout shifts */
+  padding: 20px;
+  border-radius: 30px;
+  background-color: transparent;
+  
+  /* 2. Moved animation properties to the actual links */
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+}
+
+/* 3. Targeted the links directly for hover states */
+.nav-links a:hover, 
+.nav-links a:focus, 
+.nav-links a:active {
+  background-color: rgb(255, 189, 35);
+  color: #770101;
+}
 
       .logo {
         font-family: 'Montserrat', sans-serif;
@@ -140,12 +208,22 @@ body {
   </head>
   <body>
     <div id="background"></div>
-     <nav>
-      <div class="logo">Robot Bobby</div>
-      <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
+      <nav class="navbar">
+      <div class="nav-logo"> 
+        <a href="/" class="navbar-logo">
+          <img src= "CIC LOGO.png" alt="Company Logo">
+        </a>
+        <p style="margin-left: 10px; font-family: 'Helvetica Neue', serif;">
+          <b style="font-family: 'Helvetica Neue Bold';">COLLEGE OF THE IMMACULATE CONCEPTION</b><br>CABANATUAN CITY
+        </p>
+      </div>
+
+      <!-- 2. ADDED 'transition-link' CLASS TO THE NAV LINKS -->
+      <div class="nav-links">
+        <a href="#home" class="transition-link">HOME</a>
+        <a href="#manifesto" class="transition-link">FEATURES</a>
+        <a href="#projects" class="transition-link">PROJECT</a>
+        <a href="#work" class="transition-link">CONTACTS</a>
       </div>
     </nav>
     <div id="container">

@@ -1,43 +1,47 @@
 import * as THREE from "three";
 
 export default function getStarfield({ numStars = 500 } = {}) {
-  function randomSpherePoint() {
+  const verts = new Float32Array(numStars * 3);
+  const colors = new Float32Array(numStars * 3);
+  
+  // Reuse a single Color instance to avoid creating thousands of objects
+  const tempColor = new THREE.Color();
+
+  for (let i = 0; i < numStars; i++) {
+    // Inline sphere point calculation to avoid Vector3 allocation overhead
     const radius = Math.random() * 25 + 25;
     const u = Math.random();
     const v = Math.random();
     const theta = 2 * Math.PI * u;
     const phi = Math.acos(2 * v - 1);
-    let x = radius * Math.sin(phi) * Math.cos(theta);
-    let y = radius * Math.sin(phi) * Math.sin(theta);
-    let z = radius * Math.cos(phi);
+    
+    const x = radius * Math.sin(phi) * Math.cos(theta);
+    const y = radius * Math.sin(phi) * Math.sin(theta);
+    const z = radius * Math.cos(phi);
 
-    return {
-      pos: new THREE.Vector3(x, y, z),
-      hue: 0.6, // radius * 0.02 + 0.5
-      minDist: radius,
-    };
+    // Write directly to flat array positions
+    const stride = i * 3;
+    verts[stride] = x;
+    verts[stride + 1] = y;
+    verts[stride + 2] = z;
+
+    // Set colors efficiently using the shared object
+    tempColor.setHSL(0.6, 0.2, Math.random());
+    colors[stride] = tempColor.r;
+    colors[stride + 1] = tempColor.g;
+    colors[stride + 2] = tempColor.b;
   }
-  const verts = [];
-  const colors = [];
-  const positions = [];
-  let col;
-  for (let i = 0; i < numStars; i += 1) {
-    let p = randomSpherePoint();
-    const { pos, hue } = p;
-    positions.push(p);
-    col = new THREE.Color().setHSL(hue, 0.2, Math.random());
-    verts.push(pos.x, pos.y, pos.z);
-    colors.push(col.r, col.g, col.b);
-  }
+
   const geo = new THREE.BufferGeometry();
-  geo.setAttribute("position", new THREE.Float32BufferAttribute(verts, 3));
-  geo.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  geo.setAttribute("position", new THREE.BufferAttribute(verts, 3));
+  geo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+  
   const mat = new THREE.PointsMaterial({
     size: 0.2,
     vertexColors: true,
-    // map: new THREE.TextureLoader().load("./about/circle.png"),
-    blending: THREE.AdditiveBlending
+    blending: THREE.AdditiveBlending,
+    transparent: true // Keeps rendering fast when blending colors
   });
-  const points = new THREE.Points(geo, mat);
-  return points;
+
+  return new THREE.Points(geo, mat);
 }

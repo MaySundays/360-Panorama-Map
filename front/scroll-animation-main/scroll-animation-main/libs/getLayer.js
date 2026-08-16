@@ -80,7 +80,7 @@ function getLayer({
     // CHOOSE YOUR GLOW COLOR HERE
     // ==========================================
 
-    const color = "#ff7a2d";
+    const color = "#f15900";
 
     // White:
     // const color = "#ffffff";
