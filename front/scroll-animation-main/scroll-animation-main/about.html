@@ -32,12 +32,29 @@ body {
 
   color: #fff;
 
-  --color-top: #300303;
-  --color-bottom: #b80000;
+  --color-top: #620707;
+  --color-bottom: #ff6200;
 
   background: #000;
 }
-
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 100vh;
+  
+  /* Create the frame layout */
+  box-sizing: border-box; 
+  border-left: 10px solid rgb(255, 189, 35); /* Adjust width (15px) and color (#000000) here */
+  border-right: 10px solid rgb(255, 189, 35);
+  border-bottom: 10px solid rgb(255, 189, 35);
+  
+  /* Layering and interactions */
+  z-index: 9999; /* Forces the border to sit on top of everything, including the canvas */
+  pointer-events: none; /* Allows you to click or scroll through the border area */
+}
  .navbar {
   position: fixed;
   top: 0;
@@ -50,10 +67,10 @@ body {
   padding: 0 50px;
   padding-left: 10px;
   box-sizing: border-box;
-  background: #770101;
+  background: rgb(255, 189, 35);
   z-index: 100;
   pointer-events: auto;
-  color: antiquewhite;
+  color: #770101;
 }
 
 .nav-logo {
@@ -79,7 +96,7 @@ body {
 }
 
 .nav-links a {
-  color: rgb(244, 241, 241);
+  color: #770101;
   text-decoration: none;
   font-size: 22px;
   font-weight: 700;
@@ -93,6 +110,7 @@ body {
   transform: perspective(1px) translateZ(0);
   transition-duration: 0.3s;
   transition-property: color, background-color;
+  font-family: 'Helvetica Neue Bold';
 }
 
 /* 3. Targeted the links directly for hover states */
@@ -160,8 +178,10 @@ body {
       }
       .hero-panel h1 {
         font-family: 'Montserrat', sans-serif;
-        font-size: 10em;
+        font-size: 100px;
         margin-bottom: 0.5em;
+        font-family: 'MyCustomFont', serif;
+        font-weight: lighter;
       }
       .content-panel h2 {
         font-family: 'Montserrat', sans-serif;
@@ -171,6 +191,12 @@ body {
       p {
         font-size: 2em;
       }
+      .nav-logo p {
+  margin: 0 0 0 10px;
+  font-family: 'Helvetica Neue', serif;
+  font-size: 24px;
+  line-height: 1.1;
+}
       a { 
         color: #fff;
       }
@@ -230,7 +256,7 @@ body {
       <canvas id="three-canvas"></canvas>
       <!-- Hero Section -->
       <div class="hero-panel">
-        <h1>WebGL2</h1>
+        <h1>ABOUT CAMPUS<br>EXPLORATION</h1>
         <p>Interactive 3D and 2D graphics</p>
         <p>No need for plugins.</p>
       </div>
