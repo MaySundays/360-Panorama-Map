@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="CIC LOGO.png" />
+    <title>About Camp Expo</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@400;700&display=swap');
+      @font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/BeTrueToYourSchoolII-Solid_FREE_FOR_PERSONAL_USE_ONLY.ttf'),
+  url('fonts/BeTrueToYourSchoolII-Outline_FREE_FOR_PERSONAL_USE_ONLY.ttf');
+  font-weight: lighter;
+  font-size: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url(fonts/HelveticaNeueLight.otf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: url(fonts/HelveticaNeueBold.otf);
+  font-weight: normal;
+}
+body {
+  --gap: 40em;
+  margin: 0;
+  font-family: 'Roboto Slab', serif;
+
+  color: #fff;
+
+  --color-top: #110101;
+  --color-bottom: #5c0000;
+
+  background: #000;
+}
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 100vh;
+  
+  /* Create the frame layout */
+  box-sizing: border-box; 
+  border-left: 10px solid rgb(255, 189, 35); /* Adjust width (15px) and color (#000000) here */
+  border-right: 10px solid rgb(255, 189, 35);
+  border-bottom: 10px solid rgb(255, 189, 35);
+  
+  /* Layering and interactions */
+  z-index: 9999; /* Forces the border to sit on top of everything, including the canvas */
+  pointer-events: none; /* Allows you to click or scroll through the border area */
+}
+ .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background: rgb(255, 189, 35);
+  z-index: 100;
+  pointer-events: auto;
+  color: #770101;
+}
+
+.nav-logo {
+  font-family: elevon, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* Removed animation properties from here */
+}
+
+.nav-links a {
+  color: #770101;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  
+  /* 1. Added base padding and border-radius to prevent layout shifts */
+  padding: 20px;
+  border-radius: 30px;
+  background-color: transparent;
+  
+  /* 2. Moved animation properties to the actual links */
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+  font-family: 'Helvetica Neue Bold';
+}
+
+/* 3. Targeted the links directly for hover states */
+.nav-links a:hover, 
+.nav-links a:focus, 
+.nav-links a:active {
+  background-color: rgb(255, 189, 35);
+  color: #770101;
+}
+
+      .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5em;
+        color: #fff;
+        text-transform: uppercase;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 4px 0;
+      }
+
+     #container {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 5em;
+}
+.hero-panel,
+.content-panel {
+  position: relative;
+  z-index: 2;
+}
+     #three-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+      .content-panel, .hero-panel {
+        width: 80%;
+        border-radius: 10px;
+        padding: 2em;
+        margin-bottom: 5px;
+      }
+      .content-panel {
+        height: auto;
+      }
+      .hero-panel {
+        height: auto;
+      }
+      .hero-panel h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 100px;
+        margin-bottom: 0.5em;
+        font-family: 'MyCustomFont', serif;
+        font-weight: lighter;
+      }
+      .content-panel h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 4em;
+        margin-bottom: 0.5em;
+      }
+      p {
+        font-size: 2em;
+      }
+      .nav-logo p {
+  margin: 0 0 0 10px;
+  font-family: 'Helvetica Neue', serif;
+  font-size: 24px;
+  line-height: 1.1;
+}
+      a { 
+        color: #fff;
+      }
+      .content-panel p {
+        color: #e0e0e0;
+      }
+      .hero-panel#footer {
+        margin-bottom: 5em;
+      }
+      #background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    180deg,
+    var(--color-top),
+    var(--color-bottom)
+  );
+
+  background-size: 100% 700%;
+  background-position: 0% 0%;
+
+  pointer-events: none;
+}
+    </style>
+    <script type="importmap">
+      {
+				"imports": {
+					"three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
+          "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
+        }
+			}
+    </script>
+  </head>
+  <body>
+    <div id="background"></div>
+      <nav class="navbar">
+      <div class="nav-logo"> 
+        <a href="/" class="navbar-logo">
+          <img src= "CIC LOGO.png" alt="Company Logo">
+        </a>
+        <p style="margin-left: 10px; font-family: 'Helvetica Neue', serif;">
+          <b style="font-family: 'Helvetica Neue Bold';">COLLEGE OF THE IMMACULATE CONCEPTION</b><br>CABANATUAN CITY
+        </p>
+      </div>
+
+      <!-- 2. ADDED 'transition-link' CLASS TO THE NAV LINKS -->
+      <div class="nav-links">
+        <a href="#home" class="transition-link">HOME</a>
+        <a href="#manifesto" class="transition-link">FEATURES</a>
+        <a href="#projects" class="transition-link">PROJECT</a>
+        <a href="#work" class="transition-link">CONTACTS</a>
+      </div>
+    </nav>
+    <div id="container">
+      <canvas id="three-canvas"></canvas>
+      <!-- Hero Section -->
+      <div class="hero-panel">
+        <h1>ABOUT CAMPUS<br>EXPLORATION</h1>
+        <p>Also known as "Camp Expo", this application is created as a Capstone project, 
+          which aims to become a handheld interactive map for students, faculty members, parents, 
+          and other members of the CIC community that can be easily accessible and usable anytime
+          and anywhere. It also includes drawn and animated characters which serves as tour guides
+          for a much better and enhanced user experience.
+
+        </p>
+      </div>
+
+      <!-- Feature 1: Advanced Texture Handling -->
+      <div class="content-panel">
+        <h2>What problems can be solved by this web app?</h2>
+        <p>Difficulty in locating the facilities and not being informed with their purpose and schedules.
+        </p>
+        <p>Having to locate the maps scattered everywhere around the school, and fire exits in maps being too
+          small for users to find.
+        </p>
+      </div>
+
+      <!-- Feature 2: Transform Feedback -->
+      <div class="content-panel">
+        <h2>What are used in the creation of Camp Expo?</h2>
+        <p>Three.js - used for 3d and web animation</p>
+        <p>HTML, CSS, and javascript - used for the website's blueprint, visual style and UI</p>
+        <p>Wampserver and MySQL - used for the website's backend</p>
+        <p>Photosphere Viewer.js - used in creation of panoramic photos</p>
+         <p>Blender and Poly.pizza - used for the creation of 3d assets</p>
+      </div>
+
+      <!-- Feature 3: Multiple Render Targets (MRT) -->
+      <div class="content-panel">
+        <h2>Meet the Creators!</h2>
+        <p><b>Avila, Khrestinne Keisha T.</b><br>- Animation Major <br>- Backend Developer and Animator</p>
+        <p><b>Catacutan, Rainne Kaesha B.</b><br>- Animation Major <br>- Frontend/UI Designer and Developer</p>
+       <p><b>Dayao, Jose Erickson R.</b><br>- Animation Major <br>- Photographer and 3d Assets creator</p>
+          <p><b>De Guzman, Alexander T.</b><br>- Animation Major <br>- 2d assets creator for the map and tour guides</p>
+      </div>
+        
+
+      <!-- Feature 4: Geometry Instancing -->
+      <div class="content-panel">
+        <h2>Acknowledgement</h2>
+        <p>We would like to give acknowledgement and show our deepest gratitude to our professors for their
+          guidance and for providing us enough knowledge and ideas to make this project successful.</p>
+        <p><b>Mr. Roy V. Arimbuyutan</b> - Capstone Instructor and Bachelor of Science in Information Technology (BSIT) Adviser</p>
+        <p><b>Mr. Florante M. Sugian III</b> - Bachelor of Science in Information Technology (BSIT) - Animation Instructor</p>
+      </div>
+
+      <div class="hero-panel" id="footer">
+        <h1>REFERENCES</h1>
+        <p>New possibilities for web-based graphics</p>
+        <p>Dive deeper, check out the <a href="https://registry.khronos.org/webgl/specs/latest/2.0/" target="_blank">official documentation.</a></p>
+      </div>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
