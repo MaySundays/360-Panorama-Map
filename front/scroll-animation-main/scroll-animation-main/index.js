@@ -3,10 +3,6 @@ import getLayer from "./libs/getLayer.js";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import getStarfield from "./libs/getStarfield.js";
 
-// ======================================================
-// BASIC THREE.JS SETUP
-// ======================================================
-
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -31,23 +27,11 @@ renderer.setSize(
   window.innerHeight
 );
 
-// IMPORTANT FOR PERFORMANCE
 renderer.setPixelRatio(1);
 
 renderer.setClearColor(0x000000, 0);
-
-
-// ======================================================
-// BACKGROUND
-// ======================================================
-
 const background =
   document.getElementById("background");
-
-
-// ======================================================
-// SCROLL STATE
-// ======================================================
 
 let targetScroll = 0;
 let currentScroll = 0;
@@ -55,11 +39,6 @@ let currentScroll = 0;
 let maxScroll =
   document.documentElement.scrollHeight -
   window.innerHeight;
-
-
-// ======================================================
-// UPDATE SCROLL TARGET
-// ======================================================
 
 function updateScrollTarget() {
 
@@ -82,11 +61,6 @@ function updateScrollTarget() {
     );
 }
 
-
-// ======================================================
-// SCROLL EVENT
-// ======================================================
-
 window.addEventListener(
   "scroll",
   updateScrollTarget,
@@ -94,11 +68,6 @@ window.addEventListener(
     passive: true
   }
 );
-
-
-// ======================================================
-// INITIAL SCROLL POSITION
-// ======================================================
 
 updateScrollTarget();
 
